@@ -20,3 +20,21 @@ CORS- Cross origin Resource Sharing
 	const cors = require('cors');
 	app.use(cors());
 	
+	
+	
+For Database or Creating the models for the project we are going to use MongoDB
+	Mongoose - An ODM(Object Data Modelling) that helps MongoDB and Node.js to interact
+			- provides a structured way to interact with the schema and models of the project 
+	installing Mongoose--->	npm install mongoose
+
+
+to connect to the database create a folder inside backend ----> backend>database>connect.js
+
+
+
+* In case of port not available do this :
+	On CMD:
+		netstat -ano | findstr : port number(ex:4000)
+		
+		then copy the PID 
+		taskkill /PID (ex: 24500) /F
