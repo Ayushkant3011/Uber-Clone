@@ -36,11 +36,11 @@ userSchema.methods.generateAuthToken = function(){
     return token;
 }
 
-userSchema.methods.comparePassword = async function(enteredPassword){
+userSchema.methods.comparePassword = async function(Password){
     return await bcrypt.compare(Password, this.password);
 }
 
-userSchema.methods.hashPassword = async function(){
+userSchema.statics.hashPassword = async function(password){
     return await bcrypt.hash(password, 10);
 }
 
