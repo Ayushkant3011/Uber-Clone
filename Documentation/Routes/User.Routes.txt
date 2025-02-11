@@ -1,0 +1,14 @@
+We need Routes as they provide a structured way to direct data packets across a network to their intended destination
+
+this user routes will have express and router and user.Controller as well to direct the data 
+
+
+
+-creating reister route for the user as new user needs to be registered
+	router.post('/register', [
+		body('email').isEmail().withMessage('Invalid Email'),
+		body('fullname.firstname').isLength({min:3}).withMessage('First Name should be atleast 3 characters long'),
+		body('password').isLength({min:6}).withMessage('Password should be atleast 6 characters long'),
+	],
+		userController.registerUser
+	);

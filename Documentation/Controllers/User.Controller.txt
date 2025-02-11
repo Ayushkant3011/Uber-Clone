@@ -1,0 +1,19 @@
+- We need User Model in the controller to successfully create a user that is going to use the app 
+
+
+- Register User:
+	const User = await userService.createUser({
+			firstname:fullname.firstname,
+			lastname:fullname.lastname,
+			email,
+			password:hashedPassword
+		});
+	this code will create the user after checking some condition 
+	
+	
+- Generating the token 
+    const token = User.generateAuthToken();
+
+
+
+    res.status(201).json({ token, User }); ----> this will say that the user is created successfully.

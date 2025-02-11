@@ -1,0 +1,49 @@
+Creating user model means creating how we are going to store the user data in the DB 
+
+to create a user we are goint to need two packages to create the password and generate the token 
+
+npm i bcrypt jsonwebtoken --> this will install the bcrypt library that is provided to encrypt the password and jwt to genearte the token 
+
+going to need mongoose to create the userSchema 
+
+UserSchema:
+const userSchema = new mongoose.Schema({
+    fullname:{
+        firstname:{
+            type:String,
+            required:true,
+            minlength:[3, "First Name should be atleast 3 characters long"],
+        },
+        lastname:{
+            type:String,
+            minlength:[3, 'Last Name should be atleast 3 characters long'],
+        }
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true,
+        minlength:[6, 'Email should be atleast 6 characters long'],
+    },
+    password:{
+        type:String,
+        required:true,
+        select:false,
+    },
+    
+    socketId:{
+        type:String,
+    },
+});
+
+
+and in this user model we are also going to create methods to generate AuthToken and haspassword
+
+
+Here I have used userSchema.methods.hashPassword so that was the wrong method. 
+userSchema.statics.hashPassword = async function(password){
+    return await bcrypt.hash(password, 10);
+}
+
+
+module.exports = userModel; ----> this statement will export the user model 
