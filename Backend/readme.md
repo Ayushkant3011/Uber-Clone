@@ -62,3 +62,51 @@ Example:
   ]
 }
 ```
+
+# /users/login Endpoint Documentation
+
+## Description
+This endpoint logs in an existing user. It validates the input data and returns an authentication token along with the user object when the credentials are valid.
+
+## URL
+`POST /users/login`
+
+## Request Body
+- **email** (string): A valid email address.
+- **password** (string): Required. At least 6 characters.
+
+Example:
+```json
+{
+  "email": "john.doe@example.com",
+  "password": "password123"
+}
+```
+
+## Responses
+
+### Success: 200 OK
+Returns an authentication token and the user object (password is not returned).
+
+Example:
+```json
+{
+  "token": "your_jwt_token",
+  "user": {
+    "_id": "user_unique_id",
+    "email": "john.doe@example.com"
+    // ... other user properties ...
+  },
+  "message": "User Logged In Successfully"
+}
+```
+
+### Error: 400/401 Bad Request / Unauthorized
+Returns validation error details or authentication failure messages when required fields are missing or invalid.
+
+Example:
+```json
+{
+  "message": "Invalid Email or Password"
+}
+```
