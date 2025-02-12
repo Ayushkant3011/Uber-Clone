@@ -110,3 +110,77 @@ Example:
   "message": "Invalid Email or Password"
 }
 ```
+
+# /users/profile Endpoint Documentation
+
+## Description
+This endpoint retrieves the profile information of the currently authenticated user.
+
+## URL
+`GET /users/profile`
+
+## Headers
+- **Authorization**: Bearer token required. Format: `Bearer <your_jwt_token>`
+
+## Responses
+
+### Success: 200 OK
+Returns the user profile object.
+
+Example:
+```json
+{
+  "user": {
+    "_id": "user_unique_id",
+    "email": "john.doe@example.com",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    }
+    // ... other user properties ...
+  }
+}
+```
+
+### Error: 401 Unauthorized
+Returns when no token is provided or the token is invalid.
+
+Example:
+```json
+{
+  "message": "Authentication required"
+}
+```
+
+# /users/logout Endpoint Documentation
+
+## Description
+This endpoint logs out the current user by invalidating their token.
+
+## URL
+`POST /users/logout`
+
+## Headers
+- **Authorization**: Bearer token required. Format: `Bearer <your_jwt_token>`
+
+## Responses
+
+### Success: 200 OK
+Returns a success message.
+
+Example:
+```json
+{
+  "message": "Successfully logged out"
+}
+```
+
+### Error: 401 Unauthorized
+Returns when no token is provided or the token is invalid.
+
+Example:
+```json
+{
+  "message": "Authentication required"
+}
+```
