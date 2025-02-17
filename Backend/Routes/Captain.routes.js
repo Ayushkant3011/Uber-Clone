@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {body} = require('express-validator');
+const captainController = require('../Controllers/Captain.controller');
 
 router.post('/register', [
     body('email').isEmail().withMessage('Invalid Email'),
@@ -12,7 +13,7 @@ router.post('/register', [
     body('vehicle.vehicleType').isIn(['car', 'motorcycle', 'auto']).withMessage('Invalid Vehicle Type'),
 
 ],
-    userController.registerUser
+    captainController.registerCaptain
 )
 
 module.exports = router;
