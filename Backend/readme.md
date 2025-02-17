@@ -184,3 +184,158 @@ Example:
   "message": "Authentication required"
 }
 ```
+
+# /captains/register Endpoint Documentation
+
+## Description
+Registers a new captain with their vehicle details.
+
+## URL
+`POST /captains/register`
+
+## Request Body
+```json
+{
+  "fullname": {
+    "firstname": "John", // Required, minimum 3 characters
+    "lastname": "Doe"    // Optional
+  },
+  "email": "john.doe@example.com", // Required, valid email format
+  "password": "password123",       // Required, minimum 5 characters
+  "vehicle": {
+    "color": "Black",             // Required, minimum 3 characters
+    "plate": "ABC-123",           // Required, minimum 3 characters
+    "capacity": 4,                // Required, minimum 1
+    "vehicleType": "car"          // Required, must be one of: "car", "motorcycle", "auto"
+  }
+}
+```
+
+## Responses
+
+### Success: 201 Created
+```json
+{
+  "token": "your_jwt_token",
+  "captain": {
+    "_id": "captain_unique_id",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "john.doe@example.com",
+    "vehicle": {
+      "color": "Black",
+      "plate": "ABC-123",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  },
+  "message": "Captain Registered Successfully"
+}
+```
+
+### Error: 400 Bad Request
+```json
+{
+  "errors": [
+    {
+      "msg": "Invalid Email",
+      "param": "email",
+      "location": "body"
+    }
+    // ... additional validation errors
+  ]
+}
+```
+
+# /captains/login Endpoint Documentation
+
+## URL
+`POST /captains/login`
+
+## Request Body
+```json
+{
+  "email": "john.doe@example.com", // Required, valid email format
+  "password": "password123"        // Required, minimum 5 characters
+}
+```
+
+## Responses
+
+### Success: 200 OK
+```json
+{
+  "token": "your_jwt_token",
+  "captain": {
+    "_id": "captain_unique_id",
+    "email": "john.doe@example.com",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "vehicle": {
+      "color": "Black",
+      "plate": "ABC-123",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  },
+  "message": "Captain Logged In Successfully"
+}
+```
+
+### Error: 401 Unauthorized
+```json
+{
+  "message": "Invalid Email or Password"
+}
+```
+
+# /captains/profile Endpoint Documentation
+
+## URL
+`GET /captains/profile`
+
+## Headers
+- **Authorization**: Bearer token required
+
+## Response
+
+### Success: 200 OK
+```json
+{
+  "captain": {
+    "_id": "captain_unique_id",
+    "email": "john.doe@example.com",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "vehicle": {
+      "color": "Black",
+      "plate": "ABC-123",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
+
+# /captains/logout Endpoint Documentation
+
+## URL
+`GET /captains/logout`
+
+## Headers
+- **Authorization**: Bearer token required
+
+## Response
+
+### Success: 200 OK
+```json
+{
+  "message": "Captain Logged Out Successfully"
+}
+```
