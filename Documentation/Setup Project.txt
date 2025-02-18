@@ -38,3 +38,24 @@ to connect to the database create a folder inside backend ----> backend>database
 		
 		then copy the PID 
 		taskkill /PID (ex: 24500) /F
+		
+		
+		
+		
+		
+FRONTEND:
+
+in this project we are going to use React with Vite 
+
+to install ---> npm create vite@latest
+		- foldername- Frontend
+		- package Name - package.json
+		- framework - React
+		- Variant- JavaScript
+
+then cd frontend 
+		- npm i
+		
+npm run dev will run the localhost server where frontend is going to be shown
+
+

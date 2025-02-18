@@ -1,0 +1,36 @@
+Installing TailwindCSS :
+
+	- so the tailwindcss has its upgraded version that is v4
+	- installation is way different than v3 
+	
+	- install using vite:
+		- npm install tailwindcss @tailwindcss/vite
+	
+	- Configure the Vite plugin
+			Add the @tailwindcss/vite plugin to your Vite configuration.
+
+			- vite.config.ts
+				import { defineConfig } from 'vite'
+				import tailwindcss from '@tailwindcss/vite'
+				export default defineConfig({
+				  plugins: [
+					tailwindcss(),
+				  ],
+				})
+	
+	- Import Tailwind CSS
+		Add an @import to your CSS file that imports Tailwind CSS.
+
+			index.css
+			@import "tailwindcss";
+			
+			
+			Previously we need to use 
+					@tailwind base;
+					@tailwind components;
+					@tailwind utilities;
+			
+			- @import "tailwindcss"; this will include the above three lines
+			
+			
+- To get Suggestions in VS Code you need to create tailwind.config.js in frontend folder
