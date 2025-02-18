@@ -1,1 +1,4 @@
 @import "tailwindcss";
+@import "tailwindcss/preflight"; /*@tailwind base this is not available in the v4 */
+/* @tailwind utilities; ( @tailwind components --> this is not also not available in v4 */
+@tailwind utilities;
