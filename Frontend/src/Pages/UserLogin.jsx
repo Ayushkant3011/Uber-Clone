@@ -70,5 +70,3 @@ const UserLogin = () => {
 export default UserLogin
 
 
-
-// 2hr 27min
