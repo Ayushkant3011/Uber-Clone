@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import UberLogo from '../Components/Logo/uberLogo'
 import { Link } from 'react-router-dom'
+import { UserDataContext } from '../Context/userContext'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const UserLogin = () => {
   const [email, setEmail] = useState('');
@@ -8,14 +11,29 @@ const UserLogin = () => {
 
   const [userData, setuserData] = useState({})
 
-  const submitHandler = (e) =>{
+  const {user, setUser} = useContext(UserDataContext);
+  const navigate = useNavigate();
+
+
+  const submitHandler = async(e) =>{
     e.preventDefault();
     // console.log(email, password)
-    setuserData({
+    
+    const userData = {
       email: email,
       password: password
-    });
-    console.log(userData);
+    };
+
+    const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData);
+
+    if(res.status === 200){
+      const data = res.data;
+
+      setUser(data.user);
+
+      navigate('/home');
+    }
+    // console.log(userData);
 
     setEmail('');
     setpassword('');

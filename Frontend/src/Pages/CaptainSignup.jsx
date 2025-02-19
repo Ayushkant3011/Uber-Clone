@@ -78,7 +78,7 @@ const CaptainSignup = () => {
 
           <button 
           className='bg-[#111] text-white font-semibold mb-3 rounded-sm px-4 py-2 w-full text-lg placeholder:text-base'>
-            Sign Up
+            Create Account
           </button>
 
           <p className='text-center'>Already have a account? <Link to='/captain-login' className='text-blue-600 '>SignIn Here</Link></p>
