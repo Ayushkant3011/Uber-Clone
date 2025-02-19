@@ -84,10 +84,15 @@ const UserSignup = () => {
         </form>
       </div>
 
-      <div>
+      <div className='flex flex-col gap-7'>
         <p className='text-[8px] leading-tight'>
           By proceeding, you consent to get advertisements, promotional and marketing communications,
           including by automated means, from Uber and its affiliates to the email provided.
+        </p>
+
+        <p className='text-[8px] leading-tight mb-0'>
+          This site is protected by reCAPTCHA and the <span className='underline text-blue-400'>Google Privacy Policy </span> 
+          and <span className='underline text-blue-400'> Terms of Service apply.</span>
         </p>
       </div>
     </div>
