@@ -3,6 +3,7 @@ import UberLogo from '../Components/Logo/uberLogo';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import 'remixicon/fonts/remixicon.css';
+import LocationSearchPanel from '../Components/LocationSearchPanel';
 
 const Home= () => {
   const [pickup, setPickup] = useState('');
@@ -19,14 +20,16 @@ const Home= () => {
   useGSAP(function(){
     if(panelOpen){
       gsap.to(panelRef.current,{
-        height:'70%'
+        height:'70%',
+        padding:24
       })
       gsap.to(panelCloseRef.current,{
         opacity:1
       })
     }else{
       gsap.to(panelRef.current,{
-        height:'0%'
+        height:'0%',
+        padding:0
       })
       gsap.to(panelCloseRef.current,{
         opacity:0
@@ -54,7 +57,7 @@ const Home= () => {
           <form onSubmit={(e)=>{
             submitHandler(e);
           }}>
-            <div className='line absolute h-16 w-1 top-[43%] left-10 bg-gray-600 rounded-full '></div>
+            <div className='line absolute h-15 w-1 top-[37%] left-10 bg-gray-600 rounded-full '></div>
             <input 
               onClick={()=>{
                 setPanelOpen(true);
@@ -63,7 +66,7 @@ const Home= () => {
               onChange={()=>{
                 setPickup(e.target.value);
               }}
-              className='bg-[#eee] px-12 py-2 text-base rounded-lg w-full mt-5'
+              className='bg-[#eee] px-12 py-2 text-base rounded-lg w-full mt-2'
               type='text' 
               placeholder='Enter Pickup Location'
             />
@@ -76,22 +79,30 @@ const Home= () => {
               onChange={()=>{
                 setDestination(e.target.value);
               }}
-              className='bg-[#eee] px-12 py-2 text-base rounded-lg w-full mt-3'
+              className='bg-[#eee] px-12 py-2 text-base rounded-lg w-full mt-2'
               type='text' 
               placeholder='Enter Dropoff Location'  
             />
             
-            <button>Find a Trip</button>
+            <button 
+              className='bg-[#111] text-white font-semibold mt-3 rounded-sm px-4 py-1 w-[33%] text-base placeholder:text-base'>
+                Find a Trip
+            </button>
           </form>
         </div>
 
-        <div ref={panelRef} className=' bg-red-500 h-0'>
-
+        <div ref={panelRef} className=' bg-white h-0'>
+              <LocationSearchPanel/>
         </div>
       </div>
+      
+      <div className='fixed z-10 '>
 
+      </div>
     </div>
   )
 }
 
 export default Home;
+
+// 4hr 38min
