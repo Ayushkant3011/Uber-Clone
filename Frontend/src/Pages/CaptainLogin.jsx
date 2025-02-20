@@ -1,21 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import UberLogo from '../Components/Logo/uberLogo';
 import { Link } from 'react-router-dom';
 import UberCaptainLogo from '../assets/Uber-driver.png';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { CaptainDataContext } from '../Context/CaptainContext';
 
 const CaptainLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState(''); 
-  const [captainData, setCaptainData] = useState('');
 
-  const submitHandler = (e) =>{
+  const {captain, setCaptain} = useContext(CaptainDataContext);
+  const navigate = useNavigate();
+
+  const submitHandler = async(e) =>{
     e.preventDefault();
     // console.log(email, password)
-    setCaptainData({
+    const captain ={
       email: email,
-      password: password
-    });
-    console.log(userData);
+      password
+    };
+
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captains/login`, captain);
+
+    if(response.status === 200){
+      const data = response.data;
+      setCaptain(data.captain);
+      localStorage.setItem('token', data.token);
+      navigate('/captain/home');
+    }
+
+    // console.log(userData);
 
     setEmail('');
     setPassword('');
@@ -41,7 +56,7 @@ const CaptainLogin = () => {
           className='bg-[#eeeeee] mb-7 rounded-sm px-4 py-2 border w-full text-lg placeholder:text-base'
           required 
           value={password}
-          onChange={(e) => setpassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           type='password' 
           placeholder='Password'
           />
