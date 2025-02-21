@@ -13,6 +13,10 @@ const Home= () => {
   const panelRef = useRef(null);
   const panelCloseRef = useRef(null);
 
+  const vehiclePanelRef = useRef(null);
+  const [vehiclePanel, setVehiclePanel] = useState(false);
+  
+
   const submitHandler = (e)=>{
     e.preventDefault();
   }
@@ -36,6 +40,19 @@ const Home= () => {
       })
     }
   },[panelOpen])
+
+
+  useGSAP(function(){
+    if(vehiclePanel){
+      gsap.to(vehiclePanelRef.current,{
+        transform:'translateY(0)'
+      })
+    }else{
+      gsap.to(vehiclePanelRef.current,{
+        transform:'translateY(100%)'
+      })
+    }
+  },[vehiclePanel])
 
   return (
     <div className='h-screen relative overflow-hidden'>
@@ -92,11 +109,11 @@ const Home= () => {
         </div>
 
         <div ref={panelRef} className=' bg-white h-0'>
-              <LocationSearchPanel/>
+              <LocationSearchPanel setPanelOpen={setPanelOpen} setVehiclePanel={setVehiclePanel}/>
         </div>
       </div>
       
-      <div className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-8'>
+      <div ref={vehiclePanelRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-8'>
         <h3 className='text-2xl font-semibold mb-5'>Choose a Vehicle</h3>
         
         <div className='flex border-2 active:border-black mb-2 rounded-xl w-full p-3 items-center justify-between'>
