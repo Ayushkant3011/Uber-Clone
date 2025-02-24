@@ -1,14 +1,14 @@
 import React from 'react'
 
-const ConfirmRide = (props) => {
+const LookingForDriver = (props) => {
   return (
     <div>
         <h5 className='p-1 text-center w-[93%] absolute top-0'  onClick={() =>{
-        props.setConfirmRidePanel(false);
+        props.setVehicleFound(false);
         }}>
           <i className="text-3xl text-gray-300 ri-arrow-down-wide-line"></i>
         </h5>
-        <h3 className='text-2xl font-semibold mb-5'>Confirm Your Ride</h3>
+        <h3 className='text-2xl font-semibold mb-5'>Looking for a Driver</h3>
         
         <div className='flex gap-2 justify-between flex-col items-center'>        
             <img className='h-20' src='https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_538,w_956/v1688398986/assets/90/34c200-ce29-49f1-bf35-e9d250e8217a/original/UberX.png' loading='lazy'/>
@@ -38,19 +38,9 @@ const ConfirmRide = (props) => {
                     </div>
                 </div>
             </div>
-
-            <button
-                onClick={()=>{
-                    props.setVehicleFound(true);
-                    props.setConfirmRidePanel(false);
-                }}
-                className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg'
-            >
-                    Confirm
-            </button>
         </div>
     </div>
   )
 }
 
-export default ConfirmRide
+export default LookingForDriver
