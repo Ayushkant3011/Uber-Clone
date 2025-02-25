@@ -13,7 +13,7 @@ import ConfirmRidePopUp from '../Components/Captain/ConfirmRidePopUp'
 const CaptainHome = () => {
 
   const [ridePopupPanel, setRidePopupPanel] = useState(true);
-  const [confirmRidePopupPanel, setConfirmRidePopupPanel] = useState(true);
+  const [confirmRidePopupPanel, setConfirmRidePopupPanel] = useState(false);
 
   const ridePopupPanelRef = useRef(null);
   const confirmRidePopupPanelRef = useRef(null);
@@ -62,10 +62,10 @@ const CaptainHome = () => {
         </div>
         
         <div ref={ridePopupPanelRef} className='fixed w-full z-10 bottom-0 -translate-y-full bg-white px-3 py-10 pt-12'>
-          <RidePopUp setRidePopupPanel={setRidePopupPanel}/>
+          <RidePopUp setRidePopupPanel={setRidePopupPanel} setConfirmRidePopupPanel={setConfirmRidePopupPanel}/>
         </div>
 
-        <div ref={confirmRidePopupPanelRef} className='fixed w-full z-10 bottom-0 -translate-y-full bg-white px-3 py-10 pt-12'>
+        <div ref={confirmRidePopupPanelRef} className='fixed w-full h-screen z-10 bottom-0 -translate-y-full bg-white px-3 py-10 pt-12'>
           <ConfirmRidePopUp setConfirmRidePopupPanel={setConfirmRidePopupPanel} setRidePopupPanel={setRidePopupPanel}/>
         </div>
     </div>
