@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import UberCaptainLogo from '../assets/Uber-driver.png'
 
 const CaptainRiding = () => {
   return (
