@@ -17,3 +17,7 @@ module.exports.getCoordinates = async (req,res,next)=>{
         res.status(404).json({message: 'Coordinates Not Found'});
     }
 }
+
+module.exports.getDistanceTime = async (req,res,next)=>{
+    
+}

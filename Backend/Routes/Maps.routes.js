@@ -12,11 +12,11 @@ router.get('/get-coordinates',
     mapsController.getCoordinates
 );
 
-// router.get('/get-distance-time',
-//     query('origin').isString().isLength({min: 3}),
-//     query('destination').isString().isLength({min: 3}),
-//     authMiddleware.authUser, 
-//     mapsController.getDistanceTime
-// )
+router.get('/get-distance-time',
+    query('origin').isString().isLength({min: 3}),
+    query('destination').isString().isLength({min: 3}),
+    authMiddleware.authUser, 
+    mapsController.getDistanceTime
+)
 
 module.exports = router;
