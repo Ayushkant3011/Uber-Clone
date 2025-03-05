@@ -8,6 +8,7 @@ const connectToDB = require('./Database/connect');
 const userRoutes = require('./Routes/User.routes');
 const captainRoutes = require('./Routes/Captain.routes');
 const mapsRoutes = require('./Routes/Maps.routes');
+const rideRoutes = require('./Routes/Ride.routes');
 
 connectToDB();
 
@@ -23,5 +24,7 @@ app.get('/', (req, res) => {
 app.use('/users', userRoutes);  // http://localhost:4000/user/register
 app.use('/captains', captainRoutes);  // http://localhost:4000/captain/register
 app.use('/maps', mapsRoutes);  // http://localhost:4000/maps/get-coordinates
+app.use('/rides', rideRoutes);  // http://localhost:4000/rides/create
+
 
 module.exports = app;

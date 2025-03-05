@@ -12,7 +12,7 @@ module.exports.createRide = async (req, res, next) => {
 
     try{
         const ride = await rideService.createRide({
-            user: userId,
+            user: req.user._id,
             pickup,
             destination,
             vehicleType
