@@ -38,5 +38,22 @@ async function getFare(pickup, destination){
 }
 
 
-module.exports.createRide = async ({}) =>{}
+module.exports.createRide = async ({
+    user, pickup, destination, vehicleType
+}) =>{
+    if(!user || !pickup || !destination || !vehicleType){
+        throw new Error('All Fields are required');
+    }
+
+    const fare = await getFare(pickup, destination);
+
+    const ride = rideModel.create({
+        user,
+        pickup,
+        destination,
+        fare: fare[ vehicleType ],
+    });
+
+    return ride;
+}
 
