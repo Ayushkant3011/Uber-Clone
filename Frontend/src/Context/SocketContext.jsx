@@ -22,10 +22,7 @@ const SocketProvider = ({ children }) => {
 
     setSocket(newSocket);
 
-    // Cleanup on component unmount
-    return () => {
-      newSocket.disconnect();
-    };
+
   }, []);
 
   // Function to send a message to a specific event
