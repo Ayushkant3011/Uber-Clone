@@ -73,12 +73,12 @@ module.exports.getAutocompleteSuggestions = async (input) =>{
     }
 }
 
-module.exports.getCaptainsInRadius = async (lat, lng, radius) =>{
+module.exports.getCaptainsInRadius = async (ltd, lng, radius) =>{
 
     const captains = await captainModel.find({
         location:{
             $geowithin:{
-                $centerSphere: [[lng, lat], radius / 3963.2] // radius in miles
+                $centerSphere: [[lng, ltd], radius / 6371] // radius in miles
             }
         }
     });
