@@ -21,7 +21,12 @@ router.get('/get-fare',
     rideController.getFare
 )
 
-
+router.post('/confirm',
+    authMiddleware.authCaptain,
+    body('rideId').isString().isLength({min: 3}).withMessage('Invalid Ride ID'),
+    
+    rideController.confirmRide
+)
 
 
 module.exports = router;
