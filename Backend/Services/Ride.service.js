@@ -140,7 +140,8 @@ module.exports.endRide = async ({rideId, captain})=>{
     }
 
     const ride = await rideModel.findOne({
-        _id: rideId
+        _id: rideId,
+        captain: captain._id
     }).populate('user').populate('captain').select('+otp');
 
     if(!ride){
