@@ -8,6 +8,7 @@ import VehiclePanel from '../Components/VehiclePanel';
 import ConfirmRide from '../Components/ConfirmRide';
 import WaitForDriver from '../Components/WaitForDriver';
 import LookingForDriver from '../Components/LookingForDriver';
+import LiveTracking from '../Components/LiveTracking';
 
 const Home= () => {
   const [pickup, setPickup] = useState('');
@@ -105,7 +106,7 @@ const Home= () => {
 
       <div className='h-screen w-screen'>
         {/* Image for Temporary Basis */}
-        <img className='h-full w-full object-fill' src='https://s.wsj.net/public/resources/images/BN-XR453_201802_M_20180228165619.gif' alt='Temp Map Image'/>
+        <LiveTracking />  
       </div>
 
       <div className='flex flex-col justify-end h-screen absolute w-full top-0'>
@@ -163,7 +164,12 @@ const Home= () => {
       </div>
 
       <div ref={conrfirmRidePanelRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-6 pt-12'>
-        <ConfirmRide setConfirmRidePanel={setConfirmRidePanel} setVehicleFound={setVehicleFound}/>
+        <ConfirmRide  
+        
+        
+          setConfirmRidePanel={setConfirmRidePanel} 
+          setVehicleFound={setVehicleFound} 
+        />
       </div>
 
       <div ref={VehicleFoundRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-6 pt-12'>
