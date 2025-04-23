@@ -23,10 +23,17 @@ router.get('/get-fare',
 
 router.post('/confirm',
     authMiddleware.authCaptain,
-    body('rideId').isString().isLength({min: 3}).withMessage('Invalid Ride ID'),
+    query('rideId').isString().isLength({min: 3}).withMessage('Invalid Ride ID'),
     
     rideController.confirmRide
 )
 
+
+router.get('/start-ride',
+    authMiddleware.authCaptain,
+    query('rideId').isString().isLength({min: 3}).withMessage('Invalid Ride ID'),
+    query('otp').isString().isLength({min: 4}).withMessage('Invalid OTP'),
+    rideController.startRide
+)
 
 module.exports = router;

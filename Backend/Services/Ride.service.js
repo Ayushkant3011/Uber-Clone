@@ -95,3 +95,7 @@ module.exports.confirmRide = async ({
     
     return ride;
 }
+
+
+
+// 10 hr 18min 47sec
