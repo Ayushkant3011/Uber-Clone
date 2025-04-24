@@ -27,8 +27,8 @@ const LiveTracking = () => {
     // Fetch the user's location when the component mounts
     fetchUserLocation();
 
-    // Set up an interval to update the location every 5 seconds
-    const locationInterval = setInterval(fetchUserLocation, 5000);
+    // Set up an interval to update the location every 8 seconds
+    const locationInterval = setInterval(fetchUserLocation, 8000);
 
     // Cleanup interval on component unmount
     return () => clearInterval(locationInterval);
